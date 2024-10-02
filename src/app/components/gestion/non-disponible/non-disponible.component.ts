@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { NonDesponibilitie } from 'src/app/models/nonDisponibilites.models';
+import { NonDesponibilitieService } from 'src/app/services/non-desponibilitie.service';
 
 
 @Component({
@@ -8,70 +10,19 @@ import { NonDesponibilitie } from 'src/app/models/nonDisponibilites.models';
   templateUrl: './non-disponible.component.html',
   styleUrls: ['./non-disponible.component.css']
 })
-export class NonDisponibleComponent {
+export class NonDisponibleComponent implements OnInit {
+  constructor(private disponibilityService : NonDesponibilitieService ,  private cookiesService : CookieService){
 
-  nonDispos: NonDesponibilitie[] = [
-    {
-      id: 1,
-      jour: 'Lundi',
-      enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: ''
-      },
-      periode: '8h-10h'
-    },
-    {
-      id: 2,
-      jour: 'Mardi',
-       enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: ''
-      },
-      periode: '8h-10h'
-    },
-    {
-      id: 3,
-      jour: 'Mercredi',
-      enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: ''
-      },
-      periode: '8h-10h'
-    },
-    {
-      id: 4,
-      jour: 'Jeudi',
-      enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: ''
-      },
-      periode: '8h-10h'
-    },
-  ];
+  }
+  nonDispos: NonDesponibilitie[] =[]
+
+  ngOnInit(): void {
+    const user = this.cookiesService.get('userId')
+
+    this.disponibilityService.getNonDesponibilitieById(parseInt(user)).subscribe(res=>{
+      this.nonDispos = res
+    })
+  }
 
    gotoPage(page: number): void {
    

@@ -34,7 +34,7 @@
               <h3 class="page-title">Non disponibilités</h3>
             </div>
             <div class="col-auto text-end float-end ms-auto download-grp">
-              <a routerLink="/filieres/add" class="btn btn-primary"
+              <a routerLink="/disponibility/add" class="btn btn-primary"
                 ><i class="fas fa-plus"></i
               ></a>
             </div>
@@ -91,30 +91,7 @@
             </tr>
           </tbody>
         </table>
-        <ul class="pagination justify-content-end mt-4">
-          <li class="page-item" [ngClass]="{ disabled: 0 === 0 }">
-            <a class="page-link" tabindex="-1" (click)="goToPreviousSet()"
-              >Précédent
-            </a>
-          </li>
-          <li
-            class="page-item"
-            *ngFor="let page of [3, 2, 4]"
-            [class.selected]="2 === page"
-          >
-            <a class="page-link" (click)="gotoPage(page)">{{ page + 1 }}</a>
-          </li>
-          <li class="page-item" [ngClass]="{ disabled: 3 >= 6 - 1 }">
-            <!-- Add the following code to disable the "Suivant" button when there are no more pages to show -->
-            <button
-              class="page-link"
-              [disabled]="4 >= 6 - 1"
-              (click)="goToNextSet()"
-            >
-              Suivant
-            </button>
-          </li>
-        </ul>
+      
       </div>
     </div>
   </div>

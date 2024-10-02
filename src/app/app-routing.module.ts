@@ -21,6 +21,7 @@ import {EditFiliereComponent} from "./components/edit/edit-filiere/edit-filiere.
 import {EditClasseComponent} from "./components/edit/edit-classe/edit-classe.component";
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
+import { NonDisponibilityComponent } from './components/add/non-disponibility/non-disponibility.component';
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path :'index' , component: IndexPageComponent},
@@ -33,6 +34,8 @@ const routes: Routes = [
     { path :'departements/add' , component: AddNewDepartementComponent},
     { path :'classes' , component: GestionClasseComponent},
     { path :'classes/add' , component: AddNewClasseComponent},
+    { path :'disponibility/add' , component: NonDisponibilityComponent},
+
     { path :'salles' , component: GestionSallesComponent},
     { path :'salles/add' , component: AddNewSalleComponent},
     { path :'emploitemps' , component: TimetableComponent},

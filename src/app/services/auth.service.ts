@@ -23,11 +23,9 @@ export class AuthService {
   }
 
   logout(id:number): Observable<boolean> {
-    // remove cookies
-    this.cookieService.delete('username');
+     this.cookieService.delete('username');
 this.cookieService.delete('userId');
-// Remove more cookies if needed
-
+ 
     return this.http.get<boolean>(environment.backendHost +'/auth/logout/'+id)
     }
 

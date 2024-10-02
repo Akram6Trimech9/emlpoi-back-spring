@@ -1,8 +1,8 @@
 import { Prof } from "./prof.models";
 
 export interface NonDesponibilitie {
-    id:        number;
-    jour:      string;
+    id?:        number;
+    jour:      any;
     enseignant: Prof;
-    periode:   string;
+    periode:   any;
 }
