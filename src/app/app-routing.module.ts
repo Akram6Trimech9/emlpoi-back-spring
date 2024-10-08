@@ -22,11 +22,14 @@ import {EditClasseComponent} from "./components/edit/edit-classe/edit-classe.com
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
 import { NonDisponibilityComponent } from './components/add/non-disponibility/non-disponibility.component';
+import { CustomEmploisComponent } from './components/add/custom-emplois/custom-emplois.component';
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path :'index' , component: IndexPageComponent},
     { path :'home' , component: HomeComponent},
     { path :'profs' , component: GestionProfComponent},
+    { path :'emploi' , component: CustomEmploisComponent},
+
     { path :'profs/add' , component: AddNewProfComponent},
     { path :'filieres' , component: GestionFiliereComponent},
     { path :'filieres/add' , component: AddNewFiliereComponent},

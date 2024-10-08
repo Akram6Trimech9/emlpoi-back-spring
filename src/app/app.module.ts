@@ -18,7 +18,7 @@ import { GestionClasseComponent } from './components/gestion/gestion-classe/gest
 import { AddNewClasseComponent } from './components/add/add-new-classe/add-new-classe.component';
 import { GestionSallesComponent } from './components/gestion/gestion-salles/gestion-salles.component';
 import { AddNewSalleComponent } from './components/add/add-new-salle/add-new-salle.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { EditProfComponent } from './components/edit/edit-prof/edit-prof.component';
@@ -36,6 +36,7 @@ import { ProfileComponent } from './components/widgets/profile/profile.component
 import { EditProfileComponent } from './components/edit/edit-profile/edit-profile.component';
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
 import { NonDisponibilityComponent } from './components/add/non-disponibility/non-disponibility.component';
+import { CustomEmploisComponent } from './components/add/custom-emplois/custom-emplois.component';
 
 @NgModule({
   declarations: [
@@ -70,12 +71,14 @@ import { NonDisponibilityComponent } from './components/add/non-disponibility/no
     ProfileComponent,
     EditProfileComponent,
     NonDisponibleComponent,
+    CustomEmploisComponent,
     NonDisponibilityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
      ReactiveFormsModule,
      BrowserAnimationsModule,

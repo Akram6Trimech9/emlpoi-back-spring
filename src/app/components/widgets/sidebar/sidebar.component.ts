@@ -21,6 +21,7 @@ export class SidebarComponent implements OnInit{
     title: "Emploi du temps",
     icon: "fas fa-clipboard-list"
   },
+  
   {
     link: "/classes",
     title: "Classes",
@@ -45,6 +46,11 @@ export class SidebarComponent implements OnInit{
     link: "/salles",
     title: "Salles",
     icon: "fas fa-clipboard"
+  },
+  {
+    link: "/emploi",
+    title: "Creé un Emploi",
+    icon: "fas fa-clipboard-list"
   }
 ];
 

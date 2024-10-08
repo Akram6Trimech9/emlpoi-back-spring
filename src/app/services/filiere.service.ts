@@ -21,7 +21,7 @@ export class FiliereService {
   public searchFilieres(keyword : string,page: number, size: number):Observable<PageFiliere>{
     return this.http.get<PageFiliere>(environment.backendHost+"/filieres/search?keyword="+keyword+"&page=" + page + "&size=" + size)
   }
-  public saveFiliere(Filiere: Filiere):Observable<Filiere>{
+  public saveFiliere(Filiere:any):Observable<Filiere>{
     return this.http.post<Filiere>(environment.backendHost+"/filieres",Filiere);
   }
   public updateFiliere(id: number,Filiere: Filiere):Observable<Filiere>{

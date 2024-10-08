@@ -1,0 +1,112 @@
+<form (ngSubmit)="addEvent(form)" #form="ngForm" class="mb-4">
+ 
+    <div class="row g-3" style="width: 100%;">
+        <div class="col-md-4">
+            <label for="department" class="form-label">Département:</label>
+            <select               (change)="handleDepartmentChange($event.target)"             id="department" class="form-select" [(ngModel)]="newEvent.department" name="department" (change)="newEvent.field = ''; newEvent.semester = ''" required>
+              <option value="" disabled selected>Select a department</option>
+              <option *ngFor="let department of departments" [value]="department.id">{{ department.libelle }}</option>
+            </select>
+          </div>
+      
+          <!-- Field Selection -->
+          <div class="col-md-4">
+            <label for="field" class="form-label">Filière:</label>
+            <select id="field"  (change)="handleFiliereChange($event.target)" class="form-select" [(ngModel)]="newEvent.field" name="field" (change)="newEvent.semester = ''" [disabled]="!newEvent.department" required>
+              <option value="" disabled selected>Select a field</option>
+              <option *ngFor="let field of fields" [value]="field.id">{{ field.libelle }}</option>
+            </select>
+          </div>
+      
+          <!-- Semester Selection -->
+          <div class="col-md-4">
+            <label for="semester" class="form-label">Semestre:</label>
+            <select id="semester" class="form-select" [(ngModel)]="newEvent.semester" name="semester" [disabled]="!newEvent.field" required>
+              <option value="" disabled selected>Select a semester</option>
+              <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.num }}</option>
+            </select>
+          </div>
+          <div *ngIf="newEvent.field && newEvent.semester && newEvent.department "  class="row g-3" > 
+      <div class="col-md-4">
+        <label for="day" class="form-label">Jour:</label>
+        <select id="day" class="form-select" [(ngModel)]="newEvent.day" name="day" required>
+          <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="time" class="form-label">Horaire </label>
+        <select id="time" class="form-select" [(ngModel)]="newEvent.start" name="start" required>
+          <option *ngFor="let slot of timeSlots" [value]="slot.label">{{ slot.label }}  </option>
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="end-time" class="form-label">Professeur</label>
+        <select id="end-time" class="form-select" [(ngModel)]="newEvent.professor" name="end" required>
+          <option *ngFor="let slot of professors" [value]="slot.id">{{ slot.prenom }} {{slot.nom}}</option>  
+        </select>
+      </div>
+  
+      <!-- Department Selection -->
+     
+  
+      <div class="col-md-4">
+        <label for="matiere" class="form-label">Matière:</label>
+        <select id="matiere" class="form-select" [(ngModel)]="newEvent.matiere" name="matiere" required>
+          <option *ngFor="let matiere of matieres" [value]="matiere._id">{{ matiere.matiereName }}</option>
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="group" class="form-label">Groupe:</label>
+        <select id="group" class="form-select" [(ngModel)]="newEvent.group" name="group" required>
+          <option *ngFor="let group of groups" [value]="group.id">{{ group.libelle }}</option>
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="room" class="form-label">Salle:</label>
+        <select id="room" class="form-select" [(ngModel)]="newEvent.room" name="room" required>
+          <option *ngFor="let salle of rooms" [value]="salle.id">{{ salle.numSalle }}</option>
+        </select>
+      </div>
+    </div>
+</div>
+    <button type="submit" class="btn btn-primary mt-3">Ajouter une matière</button>
+  </form>
+  
+  <!-- Display the added timetable events -->
+  <div *ngIf="events.length > 0" class="mt-5">
+    <h3>Emploi du temps:</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Horaire</th>
+          <th>Matière</th>
+          <th>Groupe</th>
+          <th>Salle</th>
+          <th>Département</th>
+          <th>Filière</th>
+          <th>Enseignant</th>
+
+          <th>Semestre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.day }}</td>
+          <td>{{ event.start }}</td>
+          <td>{{ getMatiereName(event.matiere) }}</td>
+          <td>{{ getGroupName(event.group) }}</td>
+          <td>{{ getRoomName(event.room) }}</td>
+          <td>{{ getDepartmentName(event.department) }}</td>
+          <td>{{ getFieldName(event.field) }}</td>
+          <td>{{ getProfessor(event.professor)}}</td>
+          <td>{{ getSemesterName(event.semester) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

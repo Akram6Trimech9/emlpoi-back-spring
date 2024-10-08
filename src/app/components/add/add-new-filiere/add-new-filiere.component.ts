@@ -46,24 +46,23 @@ export class AddNewFiliereComponent implements OnInit {
   }
 
   handleAddFiliere() {
-    console.log('okok')
-    if (this.newFiliereFormGroup.valid) {
+     
       const newFiliere: Filiere = this.newFiliereFormGroup.value;
-      this.filiereService.saveFiliere(newFiliere).subscribe({
+      const record = {
+        "libelle": "Computer Science",
+        "nombreSem": 1,
+        "chefFiliere": "John Doe",
+       }
+      this.filiereService.saveFiliere(record).subscribe({
         next: () => {
           Swal.fire('Succès', 'Filière ajoutée avec succès', 'success');
           this.router.navigateByUrl('/filieres');
         },
         error: (err: any) => {
-          console.log(err);
+          console.error('Error:', err);
+          Swal.fire('Erreur', err.error.message || 'Une erreur est survenue', 'error');
         },
       });
-    } else {
-      Swal.fire(
-        'Erreur',
-        'Veuillez remplir correctement tous les champs du formulaire',
-        'error'
-      );
-    }
-  }
+   }
+  
 }
